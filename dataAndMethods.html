@@ -25,12 +25,17 @@
     </div>
     <script>
         //data object   
-        var data = {}
+        var data = {
+            a: 1
+        }
 
         //the data object added to a Vue instance
         var vm = new Vue({
+            el: '#example',
             data: data
         })
+
+        vm.$data
 
         //these reference the same object!
         vm.a === data.a // =>true
