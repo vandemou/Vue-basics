@@ -1,3 +1,3 @@
 # Vue-basics
 
-Create a basic understanding of Vue.js
+Develop a basic understanding of Vue.js.
