@@ -18,11 +18,15 @@
 <body>
   <h1>Computed Properties and Watchers</h1>
   <!-- registering a component -->
+  <h2>Computed Property</h2>
   <div id="app">
     <p>Original message: "{{ message }}"</p>
-    <p>Computed reversed message: " {{reversedMessage}}"</p>
+    <p>Computed reverse message: " {{reverseMessage}}"</p>
+    <h2>Method</h2>
+    <p>Method way to reverse message: " {{reversedMessage()}}"</p>
   </div>
-
+  <h2>Watched Property</h2>
+  <div id="demo">{{ fullName }}</div>
 
   <script>
     //the data object added to a Vue instance
@@ -33,12 +37,38 @@
       },
       computed: {
         // a computed getter
-        reversedMessage: function () {
+        reverseMessage: function () {
           // 'this' points to the vm instance
+          return this.message.split('').reverse().join('')
+        }
+      },
+      methods: {
+        reversedMessage: function () {
           return this.message.split('').reverse().join('')
         }
       }
     })
+
+    var vm2 = new Vue({
+      el: '#demo',
+      data: {
+        firstName: 'Foo',
+        lastName: 'Bar',
+        fullName: 'Foo Bar'
+      },
+      // watched property
+      watch: {
+        firstName: function (val) {
+          this.fullName = val + ' ' + this.lastName
+        },
+        lastName: function (val) {
+          this.fullName = this.firstName + ' ' + val
+        }
+      }
+
+    })
+
+    // var vm2 = new Vue()
   </script>
 
 </body>
