@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Condition Rendering</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <template v-if="ok">
+            <h1 @click="klik">Condition Rendering</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta omnis quae accusamus, commodi sint accusantium
+                illum dolorem consectetur. Dolores libero consequuntur vel exercitationem tenetur soluta saepe voluptatum
+                eligendi, doloribus id?</p>
+        </template>
+        <template v-if="!ok">
+            <h1 @click="klik">You clicked the h1, very NICE!!</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta omnis quae accusamus, commodi sint accusantium
+                illum dolorem consectetur. Dolores libero consequuntur vel exercitationem tenetur soluta saepe voluptatum
+                eligendi, doloribus id?</p>
+        </template>
+    </div>
+
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                ok: true,
+                klik: function () {
+                    vm.ok ? vm.ok = false : vm.ok = true
+                    // if (vm.ok) {
+                    //     vm.ok = false
+                    // } else {
+                    //     vm.ok = true
+                    // }
+                },
+
+            }
+        })
+    </script>
+</body>
+
+</html>
