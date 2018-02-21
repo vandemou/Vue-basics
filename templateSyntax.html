@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template Syntax</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+
+        .doSomething {
+            border: 1px solid grey;
+            padding: 10px;
+            margin: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Template Syntax</h1>
+    <!-- registering a component -->
+    <div id="app1">
+        <!-- <p>{{obj.foo}}</p> -->
+        <div v-bind:id="dynamicId">Calculate with Vue: 18 x 30 = {{18 * 30}}</div>
+        <a v-bind:href="url">test url</a>
+        <br/>
+        <a v-on:click="doSomething" class="doSomething">Do something</a>
+        <br/>
+        <p v-if="seen">Now you see me</p>
+    </div>
+    <script>
+        //data object   
+        var data = {
+            a: 1
+        }
+
+        //the data object added to a Vue instance
+        var vm = new Vue({
+            el: '#app1',
+            data: {
+                dynamicId: true,
+                url: 'http://www.udw.nl',
+                doSomething: function () {
+                    alert('click event created with Vue')
+                },
+                seen: true
+            }
+        })
+
+        // vm.$data
+
+        //these reference the same object!
+        vm.a === data.a // =>true
+    </script>
+
+</body>
+
+</html>
