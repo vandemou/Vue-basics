@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Computed Properties and Watchers</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Computed Properties and Watchers</h1>
+  <!-- registering a component -->
+  <div id="app">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: " {{reversedMessage}}"</p>
+  </div>
+
+
+  <script>
+    //the data object added to a Vue instance
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello'
+      },
+      computed: {
+        // a computed getter
+        reversedMessage: function () {
+          // 'this' points to the vm instance
+          return this.message.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>
