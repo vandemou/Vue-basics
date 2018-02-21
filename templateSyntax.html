@@ -26,13 +26,25 @@
     <h1>Template Syntax</h1>
     <!-- registering a component -->
     <div id="app1">
-        <!-- <p>{{obj.foo}}</p> -->
+        <!-- directives -->
+        <p v-if="seen">Now you see me</p>
+        <!-- using javascript expressions -->
         <div v-bind:id="dynamicId">Calculate with Vue: 18 x 30 = {{18 * 30}}</div>
+        <!-- arguments -->
         <a v-bind:href="url">test url</a>
         <br/>
         <a v-on:click="doSomething" class="doSomething">Do something</a>
         <br/>
-        <p v-if="seen">Now you see me</p>
+        <!-- modifiers -->
+        <form v-on:submit.prevent="onSubmit">
+            <button>button</button>
+        </form>
+        <!-- shorthand v-bind -->
+        <a :href="url2">test url with shorthand binding</a>
+        <br/>
+        <!-- shorthand  v-on -->
+        <a @click="doSomething2">Event with shorthand syntax</a>
+
     </div>
     <script>
         //data object   
@@ -49,7 +61,14 @@
                 doSomething: function () {
                     alert('click event created with Vue')
                 },
-                seen: true
+                seen: true,
+                onSubmit: function () {
+                    alert('Submitting is prevented')
+                },
+                url2: 'http://www.udw.nl',
+                doSomething2: function () {
+                    alert('v-bind shorthand @')
+                }
             }
         })
 
