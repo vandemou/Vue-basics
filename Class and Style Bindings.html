@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Computed Properties and Watchers</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Class and Style Bindings</h1>
+    <h2>Object syntax</h2>
+    <div id="app">
+        <div v-bind:class="classObject">test object (added active class)</div>
+    </div>
+
+    <div id="app2">
+        <div v-bind:class="classObject" v-bind:style="styleObject">test object (added active class) computed property that returns an object</div>
+    </div>
+
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                classObject: {
+                    active: true,
+                    'text-danger': false
+                }
+            }
+        })
+
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                isActive: true,
+                error: null,
+                // binding inline styles
+                styleObject: {
+                    color: 'red',
+                    fontSize: '30px'
+                }
+            },
+            computed: {
+                classObject: function () {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
