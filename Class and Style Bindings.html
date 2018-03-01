@@ -6,46 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Computed Properties and Watchers</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 18px;
-            background-color: #333;
-        }
-        .container{
-            width:600px;
-            margin:0 auto;
-            /* background:rgba(0,0,0,0.1); */
-            padding:10px;
-        }
-        div{
-            background-color: #fff;
-            display: block;
-            text-align: center;
-
-            
-        }
-        #app,#app2,#app3{
-            font-size:13px;
-            padding:10px 0;
-             border-bottom:1px solid #999;
-            max-width:750px;
-            
-            
-        }
-        .text-danger {
-            color:red;
-            font-weight: bold;
-            /* background-color: rgba(0,0,0,0.1); */
-        }
-        h1,h2,h3{
-            margin:10px 0 10px 0;
-            border-bottom:1px solid #999;
-            color:#666;
-        }
-     
-    </style>
+   
 </head>
 
 <body>
@@ -57,11 +21,11 @@
         <div id="app">
             <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">test object (added active class if isActive == true and add 'text-danger' class if hasError == true)</div>
         </div>
-        <h3>inline</h3>
+        <h3>classObject</h3>
         <div id="app2">
             <div v-bind:class="classObject">The bound object does not have to be inline</div>
         </div>
-
+        <h3>Computed</h3>
         <div id="app3">
             <div v-bind:class="classObject">Bind a computed property that returns an object</div>
         </div>
